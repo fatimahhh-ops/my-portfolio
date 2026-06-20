@@ -86,7 +86,7 @@ function ParticleSphere({ count = 180, radius }: { count?: number; radius: numbe
   return (
     <points ref={ref}>
       <bufferGeometry>
-        <bufferAttribute attach="attributes-position" array={positions} itemSize={3} />
+        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
       <pointsMaterial color="#a855f7" size={0.025} transparent opacity={0.7} sizeAttenuation />
     </points>

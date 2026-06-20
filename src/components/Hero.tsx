@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { motion, useMotionValue, useSpring, useTransform, useScroll } from 'framer-motion'
+import { motion, useMotionValue, useSpring, useTransform, useScroll, type Variants } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import MagneticButton from './ui/MagneticButton'
 
@@ -66,7 +66,7 @@ function SplitHeading({ text, delay = 0 }: { text: string; delay?: number }) {
       <motion.div
         initial={{ y: '105%' }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94], delay }}
+        transition={{ duration: 0.9, ease: EASE_OUT, delay }}
       >
         {text}
       </motion.div>
@@ -74,13 +74,15 @@ function SplitHeading({ text, delay = 0 }: { text: string; delay?: number }) {
   )
 }
 
-const stagger = {
+const EASE_OUT: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94]
+
+const stagger: Variants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.1, delayChildren: 0.45 } },
 }
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE_OUT } },
 }
 
 export default function Hero() {
@@ -134,7 +136,7 @@ export default function Hero() {
       <motion.div
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
-        transition={{ duration: 1.4, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+        transition={{ duration: 1.4, delay: 0.2, ease: EASE_OUT }}
         style={{ originX: 0 }}
         className="absolute top-[35%] left-0 right-0 h-px pointer-events-none"
       >
@@ -165,7 +167,7 @@ export default function Hero() {
                 <motion.div
                   initial={{ y: '105%' }}
                   animate={{ y: 0 }}
-                  transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.68 }}
+                  transition={{ duration: 0.9, ease: EASE_OUT, delay: 0.68 }}
                   className="gradient-text"
                 >
                   Fatima Ahmed.
@@ -238,7 +240,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.15 }}
+            transition={{ duration: 0.8, ease: EASE_OUT, delay: 0.15 }}
             className="flex justify-center items-center -mt-16 lg:-mt-24"
           >
             <div className="relative">

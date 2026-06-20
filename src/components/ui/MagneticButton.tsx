@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 interface MagneticButtonProps {
   children: React.ReactNode
   className?: string
+  style?: React.CSSProperties
   onClick?: () => void
   href?: string
   strength?: number
@@ -14,6 +15,7 @@ interface MagneticButtonProps {
 export default function MagneticButton({
   children,
   className = '',
+  style,
   onClick,
   href,
   strength = 30,
@@ -47,7 +49,7 @@ export default function MagneticButton({
         animate={{ x: pos.x, y: pos.y }}
         transition={{ type: 'spring', stiffness: 200, damping: 18, mass: 0.6 }}
       >
-        <Tag href={href} onClick={onClick} className={className}>
+        <Tag href={href} onClick={onClick} className={className} style={style}>
           {children}
         </Tag>
       </motion.div>
